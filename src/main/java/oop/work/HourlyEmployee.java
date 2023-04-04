@@ -1,9 +1,9 @@
 package oop.work;
 
-public class HourlyEmployee extends Employee {
+public class HourlyEmployee extends Employee implements IWork {
     private double hourlyRate;
     private double hoursWorked;
-    private double pay = hourlyRate * hoursWorked;
+    private double pay;
     public HourlyEmployee(String name, double hourlyRate, double hoursWorked) {
         super(name);
         this.hourlyRate = hourlyRate;
@@ -25,6 +25,13 @@ public class HourlyEmployee extends Employee {
 
     public double getPay() {
         return this.pay;
+    }
+
+    @Override
+    public String formatPay() {
+        StringBuilder formattedPay = new StringBuilder("Hourly Employee's Pay: ");
+        formattedPay.append(this.pay);
+        return formattedPay.toString();
     }
 
     public void getHoursWorked(double hoursWorked) {

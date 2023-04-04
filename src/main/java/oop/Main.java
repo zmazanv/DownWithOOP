@@ -2,6 +2,7 @@ package oop;
 
 import oop.work.Entrepreneur;
 import oop.work.HourlyEmployee;
+import oop.work.IWork;
 import oop.work.SalariedEmployee;
 
 public class Main {
@@ -15,8 +16,11 @@ public class Main {
         Entrepreneur entreprenerier = new Entrepreneur("Rob", 2000, 500);
         System.out.println(entreprenerier);
 
-        Person.printPay(hourler);
-        Person.printPay(salarier);
-        Person.printPay(entreprenerier);
+        IWork[] persons = { hourler, salarier, entreprenerier };
+        Person.printPay(persons);
+
+        //Person.printPay(hourler);
+        //Person.printPay(salarier);
+        //Person.printPay(entreprenerier);
     }
 }

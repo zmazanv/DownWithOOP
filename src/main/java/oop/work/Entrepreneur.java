@@ -2,7 +2,7 @@ package oop.work;
 
 import oop.Person;
 
-public class Entrepreneur extends Person {
+public class Entrepreneur extends Person implements IWork {
     private double revenue;
     private double expenses;
     private double profit;
@@ -15,6 +15,13 @@ public class Entrepreneur extends Person {
 
     public double getProfit() {
         return this.profit;
+    }
+
+    @Override
+    public String formatPay() {
+        StringBuilder formattedPay = new StringBuilder("Entrepreneur's Pay: ");
+        formattedPay.append(this.profit);
+        return formattedPay.toString();
     }
 
     @Override
