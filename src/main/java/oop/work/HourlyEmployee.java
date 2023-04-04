@@ -3,12 +3,10 @@ package oop.work;
 public class HourlyEmployee extends Employee implements IWork {
     private double hourlyRate;
     private double hoursWorked;
-    private double pay;
     public HourlyEmployee(String name, double hourlyRate, double hoursWorked) {
         super(name);
         this.hourlyRate = hourlyRate;
         this.hoursWorked = hoursWorked;
-        this.pay = this.hourlyRate * this.hoursWorked;
     }
 
     public double getHourlyRate() {
@@ -24,13 +22,13 @@ public class HourlyEmployee extends Employee implements IWork {
     }
 
     public double getPay() {
-        return this.pay;
+        return this.hourlyRate * this.hoursWorked;
     }
 
     @Override
     public String formatPay() {
         StringBuilder formattedPay = new StringBuilder("Hourly Employee's Pay: ");
-        formattedPay.append(this.pay);
+        formattedPay.append(this.hourlyRate * this.hoursWorked);
         return formattedPay.toString();
     }
 

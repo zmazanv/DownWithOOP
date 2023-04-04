@@ -5,22 +5,20 @@ import oop.Person;
 public class Entrepreneur extends Person implements IWork {
     private double revenue;
     private double expenses;
-    private double profit;
     public Entrepreneur(String name, double revenue, double expenses) {
         super(name);
         this.revenue = revenue;
         this.expenses = expenses;
-        this.profit = this.revenue - this.expenses;
     }
 
     public double getProfit() {
-        return this.profit;
+        return (this.revenue - this.expenses);
     }
 
     @Override
     public String formatPay() {
         StringBuilder formattedPay = new StringBuilder("Entrepreneur's Pay: ");
-        formattedPay.append(this.profit);
+        formattedPay.append(this.revenue - this.expenses);
         return formattedPay.toString();
     }
 

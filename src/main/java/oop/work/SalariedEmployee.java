@@ -3,11 +3,9 @@ package oop.work;
 public class SalariedEmployee extends Employee implements IWork {
     final private byte weeksInYear = 365 / 7;
     private double salary;
-    private double pay;
     public SalariedEmployee(String name, double salary) {
         super(name);
         this.salary = salary;
-        this.pay = this.salary / weeksInYear;
     }
 
     public double getSalary() {
@@ -19,13 +17,13 @@ public class SalariedEmployee extends Employee implements IWork {
     }
 
     public double getPay() {
-        return this.pay;
+        return (this.salary / weeksInYear);
     }
 
     @Override
     public String formatPay() {
         StringBuilder formattedPay = new StringBuilder("Salaried Employee's Pay: ");
-        formattedPay.append(this.pay);
+        formattedPay.append(this.salary / weeksInYear);
         return formattedPay.toString();
     }
 
