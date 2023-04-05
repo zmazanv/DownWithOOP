@@ -3,7 +3,6 @@ package oop;
 import oop.people.Entrepreneur;
 import oop.people.employment.HourlyEmployee;
 import oop.people.employment.SalariedEmployee;
-import oop.people.employment.Worker;
 
 public class Main {
     public static void main(String[] args) {

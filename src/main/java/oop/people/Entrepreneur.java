@@ -1,7 +1,7 @@
 package oop.people;
 
 import oop.Person;
-import oop.people.employment.Worker;
+import oop.Worker;
 
 import java.text.DecimalFormat;
 

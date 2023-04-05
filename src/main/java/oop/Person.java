@@ -1,7 +1,5 @@
 package oop;
 
-import oop.people.employment.Worker;
-
 public abstract class Person {
 
     // Instance variable

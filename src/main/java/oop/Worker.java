@@ -1,4 +1,4 @@
-package oop.people.employment;
+package oop;
 
 public interface Worker {
 

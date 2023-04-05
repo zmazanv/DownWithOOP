@@ -1,6 +1,7 @@
 package oop.people.employment;
 
 import oop.Person;
+import oop.Worker;
 
 public abstract class Employee extends Person implements Worker {
 
