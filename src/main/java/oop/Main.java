@@ -1,26 +1,24 @@
 package oop;
 
-import oop.work.Entrepreneur;
-import oop.work.HourlyEmployee;
-import oop.work.IWork;
-import oop.work.SalariedEmployee;
+import oop.people.Entrepreneur;
+import oop.people.employment.HourlyEmployee;
+import oop.people.employment.SalariedEmployee;
+import oop.people.employment.Worker;
 
 public class Main {
     public static void main(String[] args) {
-        HourlyEmployee hourler = new HourlyEmployee("Jim", 15, 40);
+
+        HourlyEmployee hourler = new HourlyEmployee("Mike", 15, 40);
         hourler.printBadge();
 
-        SalariedEmployee salarier = new SalariedEmployee("Mike", 104_285.71);
+        SalariedEmployee salarier = new SalariedEmployee("Jane", 104_285.71);
         salarier.printBadge();
 
-        Entrepreneur entreprenerier = new Entrepreneur("Rob", 2000, 500);
-        System.out.println(entreprenerier);
+        Entrepreneur entrepreneurier = new Entrepreneur("Jim", 2000, 500);
+        System.out.println(entrepreneurier.toString());
 
-        IWork[] persons = { hourler, salarier, entreprenerier };
-        Person.printPay(persons);
+        Worker[] workers = { hourler, salarier, entrepreneurier };
+        Person.printPay(workers);
 
-        //Person.printPay(hourler);
-        //Person.printPay(salarier);
-        //Person.printPay(entreprenerier);
     }
 }
