@@ -10,9 +10,14 @@ public class SalariedEmployee extends Employee {
     // Instance variable
     private double salary;
 
-    // Constructor
+    // Constructors
     public SalariedEmployee(String name, double salary) {
         super(name);
+        this.salary = salary;
+    }
+
+    public SalariedEmployee(String name, double salary, boolean isManager) {
+        super(name, isManager);
         this.salary = salary;
     }
 
@@ -30,7 +35,11 @@ public class SalariedEmployee extends Employee {
     @Override
     public void printBadge() {
         StringBuilder badge = new StringBuilder();
-        badge.append("Salaried Employee: " + this.getName() + '\n');
+        if (this.getIsManager()) {
+            badge.append("Salaried Manager: " + this.getName() + '\n');
+        } else {
+            badge.append("Salaried Employee: " + this.getName() + '\n');
+        }
         badge.append("Employee ID: " + this.getIdentificationNumber());
         System.out.println(badge);
     }
@@ -40,7 +49,24 @@ public class SalariedEmployee extends Employee {
         StringBuilder pay = new StringBuilder();
         DecimalFormat twoNumbers = new DecimalFormat("#.##");
         double formattedValue = Double.parseDouble(twoNumbers.format(this.salary / weeksInYear));
-        pay.append("Salaried Employee's Pay: $" + formattedValue);
+        if (this.getIsManager()) {
+            pay.append("Hourly Manager's Pay: $" + formattedValue);
+        } else {
+            pay.append("Hourly Employee's Pay: $" + formattedValue);
+        }
         System.out.println(pay);
+    }
+
+    @Override
+    public void printItemDiscountAmount(double itemPrice) {
+        StringBuilder discount = new StringBuilder();
+        DecimalFormat twoNumbers = new DecimalFormat("#.##");
+        double formattedValue = Double.parseDouble(twoNumbers.format(this.getNetDiscount() * itemPrice));
+        if (this.getIsManager()) {
+            discount.append("Salaried Manager's Discount Amount: $" + formattedValue);
+        } else {
+            discount.append("Salaried Employee's Discount Amount: $" + formattedValue);
+        }
+        System.out.println(discount);
     }
 }

@@ -10,6 +10,7 @@ public class Entrepreneur extends Person implements Worker {
     // Instance variables
     private double expenses;
     private double revenue;
+    final private double netDiscount = 0.02;
 
     // Constructor
     public Entrepreneur(String name, double revenue, double expenses) {
@@ -25,6 +26,10 @@ public class Entrepreneur extends Person implements Worker {
 
     public double getRevenue() {
         return this.revenue;
+    }
+
+    public double getNetDiscount() {
+        return this.netDiscount;
     }
 
     // Setters
@@ -51,6 +56,15 @@ public class Entrepreneur extends Person implements Worker {
         double formattedValue = Double.parseDouble(twoNumbers.format(this.revenue - this.expenses));
         pay.append("Entrepreneur's Pay: $" + formattedValue);
         System.out.println(pay);
+    }
+
+    @Override
+    public void printItemDiscountAmount(double itemPrice) {
+        StringBuilder discount = new StringBuilder();
+        DecimalFormat twoNumbers = new DecimalFormat("#.##");
+        double formattedValue = Double.parseDouble(twoNumbers.format(this.getNetDiscount() * itemPrice));
+        discount.append("Entrepreneur's Discount Amount: $" + formattedValue);
+        System.out.println(discount);
     }
 
 }

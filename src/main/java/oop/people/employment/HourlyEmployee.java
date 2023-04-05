@@ -8,9 +8,15 @@ public class HourlyEmployee extends Employee {
     private double hourlyRate;
     private double hoursWorked;
 
-    // Constructor
+    // Constructors
     public HourlyEmployee(String name, double hourlyRate, double hoursWorked) {
         super(name);
+        this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
+    }
+
+    public HourlyEmployee(String name, double hourlyRate, double hoursWorked, boolean isManager) {
+        super(name, isManager);
         this.hourlyRate = hourlyRate;
         this.hoursWorked = hoursWorked;
     }
@@ -35,7 +41,11 @@ public class HourlyEmployee extends Employee {
     @Override
     public void printBadge() {
         StringBuilder badge = new StringBuilder();
-        badge.append("Hourly Employee: " + this.getName()+ '\n');
+        if (this.getIsManager()) {
+            badge.append("Hourly Manager: " + this.getName() + '\n');
+        } else {
+            badge.append("Hourly Employee: " + this.getName() + '\n');
+        }
         badge.append("Employee ID: " + this.getIdentificationNumber());
         System.out.println(badge);
     }
@@ -45,7 +55,24 @@ public class HourlyEmployee extends Employee {
         StringBuilder pay = new StringBuilder();
         DecimalFormat twoNumbers = new DecimalFormat("#.##");
         double formattedValue = Double.parseDouble(twoNumbers.format(this.hourlyRate * this.hoursWorked));
-        pay.append("Hourly Employee's Pay: $" + formattedValue);
+        if (this.getIsManager()) {
+            pay.append("Hourly Manager's Pay: $" + formattedValue);
+        } else {
+            pay.append("Hourly Employee's Pay: $" + formattedValue);
+        }
         System.out.println(pay);
+    }
+
+    @Override
+    public void printItemDiscountAmount(double itemPrice) {
+        StringBuilder discount = new StringBuilder();
+        DecimalFormat twoNumbers = new DecimalFormat("#.##");
+        double formattedValue = Double.parseDouble(twoNumbers.format(this.getNetDiscount() * itemPrice));
+        if (this.getIsManager()) {
+            discount.append("Hourly Manager's Discount Amount: $" + formattedValue);
+        } else {
+            discount.append("Hourly Employee's Discount Amount: $" + formattedValue);
+        }
+        System.out.println(discount);
     }
 }
