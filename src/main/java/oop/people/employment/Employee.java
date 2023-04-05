@@ -6,7 +6,7 @@ import oop.Worker;
 public abstract class Employee extends Person implements Worker {
 
     // Instance variables
-    private int identificationNumber;
+    final private int identificationNumber;
     private static int counter = 0;
 
     // Constructor
