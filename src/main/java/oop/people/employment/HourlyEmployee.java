@@ -1,6 +1,5 @@
 package oop.people.employment;
 
-import java.nio.DoubleBuffer;
 import java.text.DecimalFormat;
 
 public class HourlyEmployee extends Employee {
