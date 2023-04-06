@@ -1,5 +1,6 @@
 package oop.people;
 
+import oop.Cloth;
 import oop.Person;
 import oop.Worker;
 
@@ -13,8 +14,8 @@ public class Entrepreneur extends Person implements Worker {
     final private double netDiscount = 0.02;
 
     // Constructor
-    public Entrepreneur(String name, double revenue, double expenses) {
-        super(name);
+    public Entrepreneur(String name, Cloth[] clothingItems, double revenue, double expenses) {
+        super(name, clothingItems);
         this.expenses = expenses;
         this.revenue = revenue;
     }
@@ -64,6 +65,14 @@ public class Entrepreneur extends Person implements Worker {
         DecimalFormat twoNumbers = new DecimalFormat("#.##");
         double formattedValue = Double.parseDouble(twoNumbers.format(this.getNetDiscount() * itemPrice));
         discount.append("Entrepreneur's Discount Amount: $" + formattedValue);
+        System.out.println(discount);
+    }
+
+    public void printItemDiscountAmount(String itemDescription, double itemPrice) {
+        StringBuilder discount = new StringBuilder();
+        DecimalFormat twoNumbers = new DecimalFormat("#.##");
+        double formattedValue = Double.parseDouble(twoNumbers.format(this.getNetDiscount() * itemPrice));
+        discount.append("Entrepreneur's Discount Amount for " + itemDescription + ": $" + formattedValue);
         System.out.println(discount);
     }
 

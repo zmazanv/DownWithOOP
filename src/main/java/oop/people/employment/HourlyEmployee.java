@@ -1,5 +1,7 @@
 package oop.people.employment;
 
+import oop.Cloth;
+
 import java.text.DecimalFormat;
 
 public class HourlyEmployee extends Employee {
@@ -9,14 +11,14 @@ public class HourlyEmployee extends Employee {
     private double hoursWorked;
 
     // Constructors
-    public HourlyEmployee(String name, double hourlyRate, double hoursWorked) {
-        super(name);
+    public HourlyEmployee(String name, Cloth[] clothingItems, double hourlyRate, double hoursWorked) {
+        super(name, clothingItems);
         this.hourlyRate = hourlyRate;
         this.hoursWorked = hoursWorked;
     }
 
-    public HourlyEmployee(String name, double hourlyRate, double hoursWorked, boolean isManager) {
-        super(name, isManager);
+    public HourlyEmployee(String name, Cloth[] clothingItems, double hourlyRate, double hoursWorked, boolean isManager) {
+        super(name, clothingItems, isManager);
         this.hourlyRate = hourlyRate;
         this.hoursWorked = hoursWorked;
     }
@@ -72,6 +74,18 @@ public class HourlyEmployee extends Employee {
             discount.append("Hourly Manager's Discount Amount: $" + formattedValue);
         } else {
             discount.append("Hourly Employee's Discount Amount: $" + formattedValue);
+        }
+        System.out.println(discount);
+    }
+
+    public void printItemDiscountAmount(String itemDescription, double itemPrice) {
+        StringBuilder discount = new StringBuilder();
+        DecimalFormat twoNumbers = new DecimalFormat("#.##");
+        double formattedValue = Double.parseDouble(twoNumbers.format(this.getNetDiscount() * itemPrice));
+        if (this.getIsManager()) {
+            discount.append("Hourly Manager's Discount Amount for " + itemDescription + ": $" + formattedValue);
+        } else {
+            discount.append("Hourly Employee's Discount Amount for " + itemDescription + ": $" + formattedValue);
         }
         System.out.println(discount);
     }

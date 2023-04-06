@@ -4,10 +4,12 @@ public abstract class Person {
 
     // Instance variable
     private String name;
+    private Cloth[] clothingItems;
 
     // Constructor
-    protected Person(String name) {
+    protected Person(String name, Cloth[] clothingItems) {
         this.name = name;
+        this.clothingItems = clothingItems;
     }
 
     // Getter

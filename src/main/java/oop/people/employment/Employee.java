@@ -1,5 +1,6 @@
 package oop.people.employment;
 
+import oop.Cloth;
 import oop.Person;
 import oop.Worker;
 
@@ -16,15 +17,15 @@ public abstract class Employee extends Person implements Worker {
     private double netDiscount;
 
     // Constructors
-    protected Employee(String name) {
-        super(name);
+    protected Employee(String name, Cloth[] clothingItems) {
+        super(name, clothingItems);
         this.identificationNumber = ++counter;
         this.isManager = false;
         this.netDiscount = flatEmployeeDiscount;
     }
 
-    protected Employee(String name, boolean isManager) {
-        super(name);
+    protected Employee(String name, Cloth[] clothingItems, boolean isManager) {
+        super(name, clothingItems);
         this.identificationNumber = ++counter;
         this.isManager = isManager;
         if (this.isManager) {

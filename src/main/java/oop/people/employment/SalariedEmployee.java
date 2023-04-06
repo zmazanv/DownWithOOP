@@ -1,5 +1,7 @@
 package oop.people.employment;
 
+import oop.Cloth;
+
 import java.text.DecimalFormat;
 
 public class SalariedEmployee extends Employee {
@@ -11,13 +13,13 @@ public class SalariedEmployee extends Employee {
     private double salary;
 
     // Constructors
-    public SalariedEmployee(String name, double salary) {
-        super(name);
+    public SalariedEmployee(String name, Cloth[] clothingItems, double salary) {
+        super(name, clothingItems);
         this.salary = salary;
     }
 
-    public SalariedEmployee(String name, double salary, boolean isManager) {
-        super(name, isManager);
+    public SalariedEmployee(String name, Cloth[] clothingItems, double salary, boolean isManager) {
+        super(name, clothingItems, isManager);
         this.salary = salary;
     }
 
@@ -66,6 +68,18 @@ public class SalariedEmployee extends Employee {
             discount.append("Salaried Manager's Discount Amount: $" + formattedValue);
         } else {
             discount.append("Salaried Employee's Discount Amount: $" + formattedValue);
+        }
+        System.out.println(discount);
+    }
+
+    public void printItemDiscountAmount(String itemDescription, double itemPrice) {
+        StringBuilder discount = new StringBuilder();
+        DecimalFormat twoNumbers = new DecimalFormat("#.##");
+        double formattedValue = Double.parseDouble(twoNumbers.format(this.getNetDiscount() * itemPrice));
+        if (this.getIsManager()) {
+            discount.append("Salaried Manager's Discount Amount for " + itemDescription + ": $" + formattedValue);
+        } else {
+            discount.append("Salaried Employee's Discount Amount for " + itemDescription + ": $" + formattedValue);
         }
         System.out.println(discount);
     }

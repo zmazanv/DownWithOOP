@@ -35,12 +35,26 @@ public class Cloth {
 
     // Static method
     public static void printClothDiscount(Cloth cloth, Worker worker) {
-        worker.printItemDiscountAmount(cloth.getPrice());
+        worker.printItemDiscountAmount(cloth.getDescription(), cloth.getPrice());
     }
 
     public static void printClothDiscount(Cloth cloth, Worker[] workers) {
         for (Worker worker : workers) {
-            worker.printItemDiscountAmount(cloth.getPrice());
+            worker.printItemDiscountAmount(cloth.getDescription(), cloth.getPrice());
+        }
+    }
+
+    public static void printClothDiscount(Cloth[] cloths, Worker worker) {
+        for (Cloth cloth : cloths) {
+            worker.printItemDiscountAmount(cloth.getDescription(), cloth.getPrice());
+        }
+    }
+
+    public static void printClothDiscount(Cloth[] cloths, Worker[] workers) {
+        for (Worker worker : workers) {
+            for (Cloth cloth : cloths) {
+                worker.printItemDiscountAmount(cloth.getDescription(), cloth.getPrice());
+            }
         }
     }
 
